@@ -1,7 +1,11 @@
 // external modules
 const express = require("express");
-const { commonMiddleware } = require("../src/middlewares/index");
-const errorHandleMiddleware = require("./middlewares/ErrorHanldeMiddleware");
+const {
+  commonMiddleware,
+  errorHandleMiddleware,
+} = require("../src/middlewares/index");
+const connectMongodbByMongoose = require("./db/connect");
+
 require("dotenv").config();
 
 // create app
@@ -27,6 +31,12 @@ app.all("*", (req, res, next) => {
 // error handle midlleware
 app.use(errorHandleMiddleware);
 
-app.listen(port, () => {
-  console.log(`server is running on port: ${port}`);
-});
+// listen server and connect to database
+const main = async () => {
+  await connectMongodbByMongoose();
+  app.listen(port, () => {
+    console.log(`server is running on port: ${port}....`);
+  });
+};
+
+main();
