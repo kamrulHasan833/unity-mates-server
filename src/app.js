@@ -5,9 +5,10 @@ const {
   errorHandleMiddleware,
 } = require("../src/middlewares/index");
 const connectMongodbByMongoose = require("./db/connect");
-
 require("dotenv").config();
 
+// internal mudules
+const { biodataRouter } = require("./routes/index");
 // create app
 const app = express();
 const port = process.env.PORT || 5000;
@@ -19,6 +20,7 @@ commonMiddleware(app, express);
 app.get("/health", (req, res) => {
   res.send("unity mates is running");
 });
+app.use(biodataRouter);
 
 // handle all not found routes
 app.all("*", (req, res, next) => {
