@@ -9,12 +9,16 @@ const getBiodataSize = async (req, res) => {
     const maleBiodatas = await BiodataModel.countDocuments({
       biodata_type: "male",
     });
+    const premiumBiodatas = await BiodataModel.countDocuments({
+      member_type: "premium",
+    });
     const successStories = await SuccessStoryModel.estimatedDocumentCount();
     res.status(200).json([
       { size: totalBiodatas, title: "total biodatas" },
       { size: femaleBiodatas, title: "female biodatas" },
       { size: maleBiodatas, title: "male biodatas" },
-      { size: successStories, title: "marriages " },
+      { size: successStories, title: "marriages" },
+      { size: premiumBiodatas, title: "premium biodatas" },
     ]);
   } catch (err) {
     res.status(500).json({

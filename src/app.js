@@ -13,7 +13,9 @@ const {
   authRouter,
   requestRouter,
   paymentRouter,
+  favouriteRouter,
 } = require("./routes/index");
+
 // create app
 const app = express();
 
@@ -30,6 +32,7 @@ app.use(userRouter);
 app.use(authRouter);
 app.use(requestRouter);
 app.use(paymentRouter);
+app.use(favouriteRouter);
 
 // handle all not found routes
 app.all("*", (req, res, next) => {

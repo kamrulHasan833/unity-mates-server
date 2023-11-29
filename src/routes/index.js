@@ -4,6 +4,7 @@ const userRouter = require("./users/index");
 const authRouter = require("./authentication/index");
 const requestRouter = require("./request/index");
 const paymentRouter = require("./payment/index");
+const favouriteRouter = require("./favourite/index");
 module.exports = {
   biodataRouter,
   successStoryRouter,
@@ -11,4 +12,5 @@ module.exports = {
   authRouter,
   requestRouter,
   paymentRouter,
+  favouriteRouter,
 };
