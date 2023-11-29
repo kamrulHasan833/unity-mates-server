@@ -4,23 +4,32 @@ const {
   commonMiddleware,
   errorHandleMiddleware,
 } = require("../src/middlewares/index");
-const connectMongodbByMongoose = require("./db/connect");
-require("dotenv").config();
 
-// internal mudules
-const { biodataRouter } = require("./routes/index");
+// internal router mudules
+const {
+  biodataRouter,
+  successStoryRouter,
+  userRouter,
+  authRouter,
+  requestRouter,
+  paymentRouter,
+} = require("./routes/index");
 // create app
 const app = express();
-const port = process.env.PORT || 5000;
 
 // common middlewares
 commonMiddleware(app, express);
 
 // routers and routes
-app.get("/health", (req, res) => {
+app.get("/", (req, res) => {
   res.send("unity mates is running");
 });
 app.use(biodataRouter);
+app.use(successStoryRouter);
+app.use(userRouter);
+app.use(authRouter);
+app.use(requestRouter);
+app.use(paymentRouter);
 
 // handle all not found routes
 app.all("*", (req, res, next) => {
@@ -33,12 +42,4 @@ app.all("*", (req, res, next) => {
 // error handle midlleware
 app.use(errorHandleMiddleware);
 
-// listen server and connect to database
-const main = async () => {
-  await connectMongodbByMongoose();
-  app.listen(port, () => {
-    console.log(`server is running on port: ${port}....`);
-  });
-};
-
-main();
+module.exports = app;
