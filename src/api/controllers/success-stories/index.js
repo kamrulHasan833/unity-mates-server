@@ -1,2 +1,3 @@
 const getAll = require("./getAll");
-module.exports = { getAll };
+const createASuccessStory = require("./createASuccessStory");
+module.exports = { getAll, createASuccessStory };
