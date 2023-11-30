@@ -3,14 +3,21 @@ const FavouriteModel = require("../../../models/Favourite");
 const createAFavourite = async (req, res) => {
   try {
     const favouriteInfo = req?.body;
-    const { name, biodata_id, self_biodata_id, permanent_address, occupation } =
-      favouriteInfo;
+    const {
+      name,
+      biodata_id,
+      self_biodata_id,
+      permanent_address,
+      occupation,
+      email,
+    } = favouriteInfo;
     const payload = {
       name,
       biodata_id,
       self_biodata_id,
       permanent_address,
       occupation,
+      email,
     };
 
     const newFavourite = new FavouriteModel(payload);

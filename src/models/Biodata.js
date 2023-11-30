@@ -20,6 +20,11 @@ const schema = new mongoose.Schema({
   expected_partner_weight: { type: Number, required: true },
   email: { type: String, required: true },
   mobile_number: { type: String, required: true },
+  premium_request_status: { type: String },
+  member_type: {
+    type: String,
+    enum: ["ordinary", "premium"],
+  },
 });
 
 const Biodatas = mongoose.model("Biodata", schema);

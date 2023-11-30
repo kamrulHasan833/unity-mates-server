@@ -1,5 +1,6 @@
 const verifyAdmin = async (req, res, next) => {
   const currentUser = req?.currentUser;
+  const UserModel = require("../../models/Users");
 
   const { email } = currentUser ? currentUser : {};
 

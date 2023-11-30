@@ -10,6 +10,7 @@ const verifyUser = (req, res, next) => {
         res.status(401).json({ message: "unauthorized access request." });
       } else {
         req.currentUser = decode;
+
         next();
       }
     });

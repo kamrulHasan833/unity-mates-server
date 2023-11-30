@@ -20,6 +20,10 @@ const schema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  email: {
+    type: String,
+    required: true,
+  },
 });
 const FavouriteModel = mongoose.model("Fovourite", schema);
 module.exports = FavouriteModel;
