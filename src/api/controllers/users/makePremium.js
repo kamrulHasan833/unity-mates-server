@@ -15,7 +15,7 @@ const makePremium = async (req, res) => {
         },
       }
     );
-    console.log(result, premium_request_status);
+
     if (result.modifiedCount > 0 && premium_request_status) {
       result = await BiodataModel.updateOne(
         { email: email },
@@ -38,7 +38,7 @@ const makePremium = async (req, res) => {
         { upsert: true }
       );
     }
-    console.log(result);
+
     res.status(200).json(result);
   } catch (err) {
     res.status(500).json({ message: err.message });

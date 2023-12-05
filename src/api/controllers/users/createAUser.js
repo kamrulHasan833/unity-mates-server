@@ -13,18 +13,16 @@ const createAUser = async (req, res) => {
     // find user already created
     const result = await UserModel.findOne({ email: email });
     const isUser = result?.email ? true : false;
-    // console.log(result, isUser, user);
+
     if (isUser) {
       res.status(200).json({ message: "user already exist", status: 409 });
     } else {
-      console.log("hi");
       const newUser = new UserModel(payload);
       const result1 = await newUser.save();
 
       res.status(200).json(result1);
     }
   } catch (err) {
-    console.log(err);
     res.status(500).json({
       message: err.message,
     });

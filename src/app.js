@@ -6,6 +6,7 @@ const {
 } = require("../src/middlewares/index");
 
 // internal router mudules
+const path = require("path");
 const {
   biodataRouter,
   successStoryRouter,
@@ -21,6 +22,10 @@ const app = express();
 
 // common middlewares
 commonMiddleware(app, express);
+
+//set public folder
+const staticPath = path.join(__dirname, "../public");
+app.use(express.static(staticPath));
 
 // routers and routes
 app.get("/", (req, res) => {

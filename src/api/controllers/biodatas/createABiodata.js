@@ -24,7 +24,7 @@ const createABiodata = async (req, res) => {
       mobile_number,
       premium_request_status,
     } = biodata ? biodata : {};
-    console.log(biodata);
+
     let payload = {
       biodata_type,
       biodata_id,

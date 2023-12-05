@@ -5,11 +5,20 @@ const {
   getAllUsers,
   makePremium,
   makeAdmin,
+  getUsersByName,
 } = require("../../api/controllers/users/index");
 const verifyUser = require("../../middlewares/authentication/verifyUser");
 const verifyAdmin = require("../../middlewares/authentication/verifyAdmin");
 // get all users
 userRouter.get("/unity-mates/v1/users", verifyUser, verifyAdmin, getAllUsers);
+
+// get all users by name
+userRouter.get(
+  "/unity-mates/v1/users/query",
+  verifyUser,
+  verifyAdmin,
+  getUsersByName
+);
 
 // create a user
 userRouter.post("/unity-mates/v1/users", createAUser);

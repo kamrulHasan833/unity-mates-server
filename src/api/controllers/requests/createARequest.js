@@ -19,7 +19,7 @@ const createARequest = async (req, res) => {
       name,
       self_name,
       biodata_id,
-      self_biodata_id,
+      self_biodata_id: self_biodata_id ? self_biodata_id : 0,
       mobile_no,
       email,
       self_email,
@@ -33,7 +33,6 @@ const createARequest = async (req, res) => {
 
     res.status(200).json(result);
   } catch (err) {
-    console.log(err.message);
     res.status(500).json({ message: err?.message });
   }
 };

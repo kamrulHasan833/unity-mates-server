@@ -14,7 +14,6 @@ const schema = new mongoose.Schema({
   },
   self_biodata_id: {
     type: Number,
-    required: true,
   },
 
   status: {
